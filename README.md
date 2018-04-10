@@ -1,0 +1,1 @@
+This project is only used for my [PentagonBullets](https://github.com/sherpal/PentagonBullets) project. Hence you have to publishLocal this project if you want PentagonBullets to resolve.
