@@ -38,7 +38,7 @@ trait FontInstance extends UIObject {
   private var _size: Int = defaultFontSize
 
   /** Returns the size font and font name in a String format that is suitable for canvases draws. */
-  def font: String = _size + "px " + _font
+  def font: String = s"${_size}px${_font}"
 
   /** Sets the font family and size. Size defaults to 20. */
   def setFont(family: String, size: Int = defaultFontSize): Unit = {

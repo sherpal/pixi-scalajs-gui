@@ -8,10 +8,10 @@ version := "0.1.0-SNAPSHOT"
 
 organization := "be.adoeraene"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.13.1"
 
 libraryDependencies +=
-  "org.scala-js" %%% "scalajs-dom" % "0.9.6"
+  "org.scala-js" %%% "scalajs-dom" % "1.0.0"
 
 
 scalacOptions ++= Seq("-deprecation")

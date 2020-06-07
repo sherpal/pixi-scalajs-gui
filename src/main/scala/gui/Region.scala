@@ -28,6 +28,7 @@
 package gui
 
 import scala.collection.mutable
+import scala.Ordering.Double.TotalOrdering
 
 /**
  * A Region is an object that can be drawn on the UI.

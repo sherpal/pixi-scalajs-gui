@@ -2,6 +2,7 @@ package complex
 
 import scala.language.implicitConversions
 import math._
+import scala.util.Try
 
 
 case class Complex(re: Double, im: Double) {
@@ -89,6 +90,14 @@ object Complex {
   def rotation(angle: Double): Complex = Complex(math.cos(angle), math.sin(angle))
 
   implicit object ComplexIsNumeric extends Numeric[Complex] {
+    def parseString(str: String): Option[Complex] = {
+      val values = str.drop(8).dropRight(1).split(",").map(s => Try(s.toDouble).toOption)
+      for {
+        real <- values(0)
+        imag <- values(1)
+      } yield Complex(real, imag)
+    }
+
     override def plus(x: Complex, y: Complex): Complex = x + y
 
     override def minus(x: Complex, y: Complex): Complex = x - y

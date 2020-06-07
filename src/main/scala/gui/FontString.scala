@@ -47,7 +47,6 @@ class FontString(parent: Frame) extends LayeredRegion with FontInstance {
 
   protected val sprite: Sprite = new Sprite(PIXITexture.fromCanvas(canvas))
 
-
   protected var _parent: Option[Frame] = None
   setParent(parent)
 
@@ -271,7 +270,7 @@ class FontString(parent: Frame) extends LayeredRegion with FontInstance {
         case JustifyMiddle => height / 2 - l / 2 * (fontHeight + _lineSpace) +
           (if (l % 2 != 0) fontHeight / 2 else 0)
         case JustifyBottom => height - (l - 1) * (fontHeight + _lineSpace)
-      }) to height by fontHeight + _lineSpace
+      }).toInt to height.toInt by (fontHeight + _lineSpace).toInt
 
       val linesInfo = allLines.zip(ys).map({case (line, h) => new LineInfo(line, strXCoord(
         line.foldLeft("")((acc: String, elem: (String, String)) => acc + elem._1)), h)})
@@ -313,9 +312,9 @@ object FontString {
     val rHex = Integer.toHexString((r * 255).toInt)
     val gHex = Integer.toHexString((g * 255).toInt)
     val bHex = Integer.toHexString((b * 255).toInt)
-    ((if (rHex.length == 1) 0 + rHex else rHex) +
-      (if (gHex.length == 1) 0 + gHex else gHex) +
-      (if (bHex.length == 1) 0 + bHex else bHex)).toUpperCase
+    ((if (rHex.length == 1) s"0$rHex" else rHex) +
+      (if (gHex.length == 1) s"0$gHex" else gHex) +
+      (if (bHex.length == 1) s"0$bHex" else bHex)).toUpperCase
   }
 
   private def fillReturnLineColor(s: String): String = colorMatch.replaceAllIn(s, m => {
